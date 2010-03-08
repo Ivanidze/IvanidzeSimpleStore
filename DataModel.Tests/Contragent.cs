@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using NHibernate.Cfg;
 using DataModel.Domain;
 using DataModel.Repositories;
 using NHibernate.Tool.hbm2ddl;
@@ -52,7 +48,7 @@ namespace DataModel.Tests
             CreateInitialData();
         }
         [Test]
-        public void Can_add_new_Contragent()
+        public void CanAddNewContragent()
         {
             var contragent = new Contragent { FIO = "Вася Пупкин", ContactPhone = "78-65-65" };
             IContragentRepository repository = new ContragentRepository();
@@ -68,7 +64,7 @@ namespace DataModel.Tests
             }
         }
         [Test]
-        public void Can_Update_Existing_Contragent()
+        public void CanUpdateExistingContragent()
         {
             var contragent = _contragents[0];
             contragent.FIO = "Петр Козлов";
@@ -81,7 +77,7 @@ namespace DataModel.Tests
             }
         }
         [Test]
-        public void Can_Delete_Existing_Contragent()
+        public void CanDeleteExistingContragent()
         {
             var contragent = _contragents[0];
             IContragentRepository repository = new ContragentRepository();
@@ -95,7 +91,7 @@ namespace DataModel.Tests
 
         }
         [Test]
-        public void Can_Get_Contragent_By_Id()
+        public void CanGetContragentById()
         {
 
             IContragentRepository repository = new ContragentRepository();
@@ -106,7 +102,7 @@ namespace DataModel.Tests
         }
 
         [Test]
-        public void Can_get_Contragent_By_Name()
+        public void CanGetContragentByName()
         {
             IContragentRepository repository = new ContragentRepository();
             var fromDb = repository.GetByFio(_contragents[1].FIO);
@@ -116,7 +112,7 @@ namespace DataModel.Tests
 
         }
         [Test]
-        public void Can_get_Contragent_By_PartName()
+        public void CanGetContragentByPartName()
         {
             IContragentRepository repository = new ContragentRepository();
             var fromDb = repository.GetByPartFio("Сергей");

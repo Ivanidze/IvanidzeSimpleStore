@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DataModel.Repositories;
+﻿using DataModel.Repositories;
 using NHibernate;
 
 namespace DataModel.Domain
@@ -38,7 +34,7 @@ namespace DataModel.Domain
                 transaction.Commit();
             }
         }
-        public WareGroup GetAggregateById(int WareGroupId)
+        public WareGroup GetAggregateById(int wareGroupId)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -47,7 +43,7 @@ namespace DataModel.Domain
                           " left join fetch e.Children c" +
                           " where e.Id = :id";
                 var node = session.CreateQuery(sql)
-                    .SetInt32("id", WareGroupId)
+                    .SetInt32("id", wareGroupId)
                     .UniqueResult<WareGroup>();
 
                 // load the ancestors
@@ -55,7 +51,7 @@ namespace DataModel.Domain
                           " left join fetch e.Ancestors a" +
                           " where e.Id = :id";
                 node = session.CreateQuery(sql2)
-                    .SetInt32("id", WareGroupId)
+                    .SetInt32("id", wareGroupId)
                     .UniqueResult<WareGroup>();
 
                 // load the descendants
@@ -63,7 +59,7 @@ namespace DataModel.Domain
                           " left join fetch e.Descendants d" +
                           " where e.Id = :id";
                 node = session.CreateQuery(sql3)
-                    .SetInt32("id", WareGroupId)
+                    .SetInt32("id", wareGroupId)
                     .UniqueResult<WareGroup>();
 
                 return node;

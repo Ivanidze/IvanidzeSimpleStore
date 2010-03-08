@@ -73,7 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Contragent.cs" />
+    <Compile Include="Domain\IProducerRepository.cs" />
+    <Compile Include="Domain\Producer.cs" />
     <Compile Include="Domain\WareGroup.cs" />
+    <Compile Include="Repositories\ProducerRepository.cs" />
     <Compile Include="Repositories\WareGroupRepository.cs" />
     <Compile Include="Domain\IWareGroupRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +93,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Mapping\WareGroup.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Producer.hbm.xml" />
     <Content Include="SimpleStore.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

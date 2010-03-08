@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using DataModel.Domain;
 using DataModel.Repositories;
 using NHibernate;
-using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
 
 namespace DataModel.Tests
 {
     [TestFixture]
-    public class EquipmentRepository_Fixture
+    public class WareGroupRepository_Fixture
     {
         private ISessionFactory _sessionFactory;
         private IWareGroupRepository _repository;
@@ -60,7 +56,7 @@ namespace DataModel.Tests
         }
 
         [Test]
-        public void Can_load_aggregate_by_id()
+        public void CanLoadAggregateById()
         {
             var id = _root.Id;
             var node = _repository.GetAggregateById(id);
@@ -76,10 +72,12 @@ namespace DataModel.Tests
         }
 
         [Test]
-        public void Can_get_ancestors()
+        public void CanGetAncestors()
         {
             var id = _child1_3.Id;
             var node = _repository.GetAggregateById(id);
+            //#todo дописать тесты
+            
         }
     }
 }
