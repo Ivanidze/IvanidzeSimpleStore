@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="DataModel" namespace="DataModel.Domain">
+  <class name="WareGroup">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="Name" length="50" not-null="true" unique="true"/>
+
+    <many-to-one name="Parent" class="WareGroup" column="ParentId" />
+
+    <set name="Children" inverse="true" cascade="all" >
+      <key column="ParentId" foreign-key="fk_WareGroup_ParentWareGroup"/>
+      <one-to-many class="WareGroup"/>
+    </set>
+
+    <set name="Descendants" table="WareGroupHierarchy" inverse="true" >
+      <key column="ParentId" foreign-key="fk_HierarchyWareGroup_ParentWareGroup"/>
+      <many-to-many class="WareGroup" column="ChildId" foreign-key="fk_HierarchyWareGroup_ChildWareGroup" />
+    </set>
+
+    <set name="Ancestors" table="WareGroupHierarchy" >
+      <key column="ChildId" />
+      <many-to-many class="WareGroup" column="ParentId" />
+    </set>
+  </class>
+</hibernate-mapping>
