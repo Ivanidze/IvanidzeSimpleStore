@@ -81,6 +81,7 @@
     <Compile Include="Contragent.cs" />
     <Compile Include="Producer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="WareGroup.cs" />
   </ItemGroup>
   <ItemGroup>

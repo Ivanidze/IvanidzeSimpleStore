@@ -4,7 +4,7 @@
     <id name="Id">
       <generator class ="native"/>
     </id>
-    <property name="FIO"/>
-    <property name="ContactPhone"/>
+    <property name="FIO" not-null="true" unique="true"/>
+    <property name="ContactPhone" not-null="true"/>
   </class>
 </hibernate-mapping>

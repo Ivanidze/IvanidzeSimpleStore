@@ -73,9 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Contragent.cs" />
+    <Compile Include="Domain\IModelRepository.cs" />
     <Compile Include="Domain\IProducerRepository.cs" />
+    <Compile Include="Domain\Model.cs" />
     <Compile Include="Domain\Producer.cs" />
     <Compile Include="Domain\WareGroup.cs" />
+    <Compile Include="Repositories\ModelRepository.cs" />
     <Compile Include="Repositories\ProducerRepository.cs" />
     <Compile Include="Repositories\WareGroupRepository.cs" />
     <Compile Include="Domain\IWareGroupRepository.cs" />
@@ -94,9 +97,13 @@
     </Content>
     <EmbeddedResource Include="Mapping\WareGroup.hbm.xml" />
     <EmbeddedResource Include="Mapping\Producer.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Model.hbm.xml" />
     <Content Include="SimpleStore.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Domain\Domain.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

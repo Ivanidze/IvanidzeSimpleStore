@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="DataModel" namespace="DataModel.Domain">
-  <class name="Producer">
+
+  <class name="Model">
     <id name="Id">
-      <generator class ="native"/>
+      <generator class="native"/>
     </id>
-    <property name="Caption" not-null="true" unique="true"/>
+    <property name="Name" not-null="true" unique="true"/>
+    <one-to-one name="WareGroup" class ="WareGroup"/>
   </class>
 </hibernate-mapping>

@@ -76,8 +76,9 @@ namespace DataModel.Tests
         {
             var id = _child1_3.Id;
             var node = _repository.GetAggregateById(id);
-            //#todo дописать тесты
-            
+            Assert.Equals(0,node.Children.Count);
+            Assert.Equals(2, node.Ancestors.Count);
+            Assert.Equals(0, node.Descendants.Count);
         }
     }
 }
