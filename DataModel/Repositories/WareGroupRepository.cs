@@ -1,41 +1,14 @@
-﻿using DataModel.Repositories;
+﻿using System;
+using DataModel.Repositories;
 using NHibernate;
 
 namespace DataModel.Domain
 {
-    public class WareGroupRepository : IWareGroupRepository
+    public class WareGroupRepository : BaseRepository<WareGroup>, IWareGroupRepository
     {
-        public void Add(WareGroup wareGroup)
+        public override WareGroup GetById(int Id)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                session.Save(wareGroup);
-                transaction.Commit();
-            }
-        }
-
-        public void Update(WareGroup wareGroup)
-        {
-            using (ISession session = NHibernateHelper.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                session.Update(wareGroup);
-                transaction.Commit();
-            }
-        }
-
-        public void Remove(WareGroup wareGroup)
-        {
-            using (ISession session = NHibernateHelper.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                session.Delete(wareGroup);
-                transaction.Commit();
-            }
-        }
-        public WareGroup GetAggregateById(int wareGroupId)
-        {
+        
             using (var session = NHibernateHelper.OpenSession())
             {
                 var sql = "from WareGroup e" +
@@ -43,7 +16,7 @@ namespace DataModel.Domain
                           " left join fetch e.Children c" +
                           " where e.Id = :id";
                 var node = session.CreateQuery(sql)
-                    .SetInt32("id", wareGroupId)
+                    .SetInt32("id", Id)
                     .UniqueResult<WareGroup>();
 
                 // load the ancestors
@@ -51,7 +24,7 @@ namespace DataModel.Domain
                           " left join fetch e.Ancestors a" +
                           " where e.Id = :id";
                 node = session.CreateQuery(sql2)
-                    .SetInt32("id", wareGroupId)
+                    .SetInt32("id", Id)
                     .UniqueResult<WareGroup>();
 
                 // load the descendants
@@ -59,13 +32,12 @@ namespace DataModel.Domain
                           " left join fetch e.Descendants d" +
                           " where e.Id = :id";
                 node = session.CreateQuery(sql3)
-                    .SetInt32("id", wareGroupId)
+                    .SetInt32("id", Id)
                     .UniqueResult<WareGroup>();
 
                 return node;
             }
         }
 
-     
     }
 }

@@ -10,20 +10,20 @@ namespace DataModel.Tests
 {
 
     [TestFixture]
-    public class ContragentRepository_Fixture
+    public class PersonRepository_Fixture
     {
         private ISessionFactory _sessionFactory;
 
 
-        private readonly Contragent[] _contragents = new[]
+        private readonly Person[] _contragents = new[]
                                                         {
-                                                            new Contragent
+                                                            new Person
                                                                 {FIO = "Сергей Бояринцев", ContactPhone = "33-22-33"},
-                                                            new Contragent
+                                                            new Person
                                                                 {FIO = "Василий Петров", ContactPhone = "32-23-65"},
-                                                            new Contragent
+                                                            new Person
                                                                 {FIO = "Андрей Иванов", ContactPhone = "54-42-65"},
-                                                            new Contragent{FIO = "Сергей Бездарнов",ContactPhone = "33-65-23"}
+                                                            new Person{FIO = "Сергей Бездарнов",ContactPhone = "33-65-23"}
             
                                                         };
         private void CreateInitialData()
@@ -50,12 +50,12 @@ namespace DataModel.Tests
         [Test]
         public void CanAddNewContragent()
         {
-            var contragent = new Contragent { FIO = "Вася Пупкин", ContactPhone = "78-65-65" };
-            IContragentRepository repository = new ContragentRepository();
+            var contragent = new Person { FIO = "Вася Пупкин", ContactPhone = "78-65-65" };
+            IPersontRepository repository = new PersonRepository();
             repository.Add(contragent);
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Contragent>(contragent.Id);
+                var fromDb = session.Get<Person>(contragent.Id);
 
                 Assert.IsNotNull(fromDb);
                 Assert.AreNotSame(contragent, fromDb);
@@ -68,11 +68,11 @@ namespace DataModel.Tests
         {
             var contragent = _contragents[0];
             contragent.FIO = "Петр Козлов";
-            IContragentRepository repository = new ContragentRepository();
+            IPersontRepository repository = new PersonRepository();
             repository.Update(contragent);
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Contragent>(contragent.Id);
+                var fromDb = session.Get<Person>(contragent.Id);
                 Assert.AreEqual(contragent.FIO, fromDb.FIO);
             }
         }
@@ -80,12 +80,12 @@ namespace DataModel.Tests
         public void CanDeleteExistingContragent()
         {
             var contragent = _contragents[0];
-            IContragentRepository repository = new ContragentRepository();
+            IPersontRepository repository = new PersonRepository();
             repository.Remove(contragent);
 
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Contragent>(contragent.Id);
+                var fromDb = session.Get<Person>(contragent.Id);
                 Assert.IsNull(fromDb);
             }
 
@@ -94,7 +94,7 @@ namespace DataModel.Tests
         public void CanGetContragentById()
         {
 
-            IContragentRepository repository = new ContragentRepository();
+            IPersontRepository repository = new PersonRepository();
             var fromDb = repository.GetById(_contragents[1].Id);
             Assert.IsNotNull(fromDb);
             Assert.AreNotSame(_contragents[1], fromDb);
@@ -104,7 +104,7 @@ namespace DataModel.Tests
         [Test]
         public void CanGetContragentByName()
         {
-            IContragentRepository repository = new ContragentRepository();
+            IPersontRepository repository = new PersonRepository();
             var fromDb = repository.GetByFio(_contragents[1].FIO);
             Assert.IsNotNull(fromDb);
             Assert.AreNotSame(_contragents[1], fromDb);
@@ -114,7 +114,7 @@ namespace DataModel.Tests
         [Test]
         public void CanGetContragentByPartName()
         {
-            IContragentRepository repository = new ContragentRepository();
+            IPersontRepository repository = new PersonRepository();
             var fromDb = repository.GetByPartFio("Сергей");
             Assert.IsNotNull(fromDb);
             Assert.AreEqual(fromDb.Count, 2);
@@ -124,7 +124,7 @@ namespace DataModel.Tests
             Assert.IsTrue(IsInCollection(fromDb, _contragents[3]));
         }
 
-        private bool IsInCollection(ICollection<Contragent> collection, Contragent searchingContragent)
+        private bool IsInCollection(ICollection<Person> collection, Person searchingContragent)
         {
             return collection.Any(contragent => contragent.Id == searchingContragent.Id);
         }

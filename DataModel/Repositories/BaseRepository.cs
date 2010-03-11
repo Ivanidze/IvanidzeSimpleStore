@@ -7,35 +7,43 @@ using NHibernate;
 
 namespace DataModel.Repositories
 {
-    public class ModelRepository:IModelRepository
+    public class BaseRepository<T>:IBaseRepository<T>
     {
-        public void Add(Model model)
+        public  virtual void Add(T obj)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
-                session.Save(model);
+                session.Save(obj);
                 transaction.Commit();
             }
         }
 
-        public void Update(Model model)
+        public virtual void Update(T obj)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
-                session.Update(model);
+                session.Update(obj);
                 transaction.Commit();
             }
         }
 
-        public void Remove(Model model)
+        public virtual void Remove(T obj)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
-                session.Delete(model);
+                session.Delete(obj);
                 transaction.Commit();
+            }
+        }
+
+        public virtual T GetById(int id)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                return session.Get<T>(id);
             }
         }
     }

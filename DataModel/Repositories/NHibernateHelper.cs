@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FluentNHibernate.Cfg;
 using NHibernate;
-using NHibernate.Cfg;
+
 using DataModel.Domain;
+using NHibernate.Cfg;
 
 namespace DataModel.Repositories
 {
@@ -18,9 +20,15 @@ namespace DataModel.Repositories
             {
                 if (_configurator==null)
                 {
-                    _configurator = new Configuration();
-                    _configurator.Configure();
-                    _configurator.AddAssembly(typeof(Contragent).Assembly);
+                    var fluentConfiguration =
+                        Fluently.Configure().Database(
+                            FluentNHibernate.Cfg.Db.MsSqlCeConfiguration.Standard.ConnectionString(
+                                "Data Source = SimpleStore.sdf"));
+                    
+                    fluentConfiguration.Mappings(m => m.FluentMappings.AddFromAssemblyOf<WareGroup>());
+                    _configurator = fluentConfiguration.BuildConfiguration();
+                    
+                    
                     
                     
                 }

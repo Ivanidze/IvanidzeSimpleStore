@@ -5,7 +5,7 @@ using System.Text;
 using DataModel.Domain;
 using NHibernate;
 using NHibernate.Criterion;
-using NHibernate.LambdaExtensions;
+
 namespace DataModel.Repositories
 {
     public class ProducerRepository:IProducerRepository
@@ -43,7 +43,7 @@ namespace DataModel.Repositories
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 Producer producer =
-                    session.CreateCriteria(typeof(Producer)).Add<Producer>(p => p.Caption == caption).UniqueResult<Producer>();
+                    session.CreateCriteria(typeof(Producer)).Add(Restrictions.Eq("Caption", caption)).UniqueResult<Producer>();
                 return producer;
             }
         }

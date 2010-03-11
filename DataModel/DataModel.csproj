@@ -35,11 +35,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\FluentNHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+    <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\NHibernate.dll</HintPath>
     </Reference>
@@ -72,32 +76,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Contragent.cs" />
-    <Compile Include="Domain\IModelRepository.cs" />
-    <Compile Include="Domain\IProducerRepository.cs" />
-    <Compile Include="Domain\Model.cs" />
+    <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IWorkerRepository.cs" />
+    <Compile Include="Domain\Person.cs" />
+    <Compile Include="Repositories\Interfaces\IModelRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IProducerRepository.cs" />
+    <Compile Include="Domain\WareType.cs" />
     <Compile Include="Domain\Producer.cs" />
     <Compile Include="Domain\WareGroup.cs" />
-    <Compile Include="Repositories\ModelRepository.cs" />
+    <Compile Include="Domain\Worker.cs" />
+    <Compile Include="Mapping\PersonMap.cs" />
+    <Compile Include="Mapping\WareTypeMap.cs" />
+    <Compile Include="Mapping\ProducerMap.cs" />
+    <Compile Include="Mapping\WareGroupMap.cs" />
+    <Compile Include="Mapping\Worker.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\WareTypeRepository.cs" />
     <Compile Include="Repositories\ProducerRepository.cs" />
     <Compile Include="Repositories\WareGroupRepository.cs" />
-    <Compile Include="Domain\IWareGroupRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IWareGroupRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ContragentRepository.cs" />
-    <Compile Include="Domain\IContragentRepository.cs" />
+    <Compile Include="Repositories\PersontRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IPersontRepository.cs" />
     <Compile Include="Repositories\NHibernateHelper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Mapping\Contragent.hbm.xml">
-    </EmbeddedResource>
+    <Compile Include="Repositories\WorkerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Mapping\WareGroup.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Producer.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Model.hbm.xml" />
     <Content Include="SimpleStore.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -41,6 +41,7 @@ namespace DataModel.Tests
 
             _root.AddChild(_child1);
             _root.AddChild(_child2);
+            
             _child1.AddChild(_child1_1);
             _child1.AddChild(_child1_2);
             _child1.AddChild(_child1_3);
@@ -59,7 +60,7 @@ namespace DataModel.Tests
         public void CanLoadAggregateById()
         {
             var id = _root.Id;
-            var node = _repository.GetAggregateById(id);
+            var node = _repository.GetById(id);
             Assert.IsNotNull(node);
             Assert.IsTrue(NHibernateUtil.IsInitialized(node.Parent));
             Assert.IsTrue(NHibernateUtil.IsInitialized(node.Children));
@@ -75,10 +76,10 @@ namespace DataModel.Tests
         public void CanGetAncestors()
         {
             var id = _child1_3.Id;
-            var node = _repository.GetAggregateById(id);
-            Assert.Equals(0,node.Children.Count);
-            Assert.Equals(2, node.Ancestors.Count);
-            Assert.Equals(0, node.Descendants.Count);
+            var node = _repository.GetById(id);
+            Assert.AreEqual(0,node.Children.Count);
+            Assert.AreEqual(2, node.Ancestors.Count);
+            Assert.AreEqual(0, node.Descendants.Count);
         }
     }
 }

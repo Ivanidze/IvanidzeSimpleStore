@@ -11,14 +11,14 @@ using DataModel.Domain;
 namespace DataModel.Tests
 {
     [TestFixture]
-    public class ModelRepository_Fixture
+    public class WareTypeRepository_Fixture
     {
         private ISessionFactory _sessionFactory;
 
-        private Model _model1, _model2;
+        private WareType _model1, _model2;
 
         private WareGroup _root, _child1, _child2, _child1_1, _child1_2,_root2;
-
+        private Producer _producer, _producer2;
         [SetUp]
         public void SetupContext()
         {
@@ -38,8 +38,10 @@ namespace DataModel.Tests
             _child1.AddChild(_child1_1);
             _child1.AddChild(_child1_2);
             _root2 = new WareGroup{Name = "Антиквариат"};
-            _model1 = new Model {Name = "N78", WareGroup = _child1_2};
-            _model2 = new Model {Name = "T2100", WareGroup = _child2};
+            _producer = new Producer {Caption = "Nokia"};
+            _producer2 = new Producer {Caption = "Intel"};
+            _model1 = new WareType {Name = "N78", WareGroup = _child1_2,Producer = _producer};
+            _model2 = new WareType { Name = "T2100", WareGroup = _child2,Producer = _producer2};
             using (var session = _sessionFactory.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
@@ -50,6 +52,12 @@ namespace DataModel.Tests
                 using (var transaction = session.BeginTransaction())
                 {
                     session.Save(_root2);
+                    transaction.Commit();
+                }
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.Save(_producer);
+                    session.Save(_producer2);
                     transaction.Commit();
                 }
                 using (ITransaction transaction = session.BeginTransaction())
@@ -69,46 +77,47 @@ namespace DataModel.Tests
 
         }
         [Test]
-        public void CanAddNewModel()
+        public void CanAddNewWareType()
         {
-            var model = new Model { Name = "N76",WareGroup = _child1_1 };
-            IModelRepository repository = new ModelRepository();
-            repository.Add(model);
+            var wareType = new WareType { Name = "N76",WareGroup = _child1_1 ,Producer = _producer2};
+            IWareTypeRepository repository = new WareTypeRepository();
+            repository.Add(wareType);
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Model>(model.Id);
+                var fromDb = session.Get<WareType>(wareType.Id);
 
                 Assert.IsNotNull(fromDb);
-                Assert.AreNotSame(model, fromDb);
-                Assert.AreEqual(model.Name, fromDb.Name);
-                Assert.AreEqual(model.WareGroup.Name,fromDb.WareGroup.Name);
+                Assert.AreNotSame(wareType, fromDb);
+                Assert.AreEqual(wareType.Name, fromDb.Name);
+                Assert.AreEqual(wareType.WareGroup.Name,fromDb.WareGroup.Name);
+                Assert.AreEqual(wareType.Producer.Caption,fromDb.Producer.Caption);
             }
 
         }
         [Test]
         public void CanUpdateModel()
         {
-            var model = _model1;
-            IModelRepository repository = new ModelRepository();
-            model.Name = "N79";
-            repository.Update(model);
+            var wareType = _model1;
+            IWareTypeRepository repository = new WareTypeRepository();
+            wareType.Name = "N79";
+            repository.Update(wareType);
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Model>(model.Id);
+                var fromDb = session.Get<WareType>(wareType.Id);
                 Assert.IsNotNull(fromDb);
-                Assert.AreEqual(model.Name, model.Name);
+                Assert.AreEqual(wareType.Name, wareType.Name);
 
             }
         }
         [Test]
         public void CanDeleteModel()
         {
-            var model = _model2;
-            IModelRepository repository = new ModelRepository();
-            repository.Remove(model);
+            var wareType = _model2;
+            IWareTypeRepository repository = new WareTypeRepository();
+            repository.Remove(wareType);
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Model>(model.Id);
+                var fromDb = session.Get<WareType>(wareType.Id);
                 Assert.IsNull(fromDb);
             }
         }
