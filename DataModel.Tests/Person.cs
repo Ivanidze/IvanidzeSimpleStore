@@ -15,7 +15,7 @@ namespace DataModel.Tests
         private ISessionFactory _sessionFactory;
 
 
-        private readonly Person[] _contragents = new[]
+        private readonly Person[] _persons = new[]
                                                         {
                                                             new Person
                                                                 {FIO = "Сергей Бояринцев", ContactPhone = "33-22-33"},
@@ -31,9 +31,9 @@ namespace DataModel.Tests
             using (ISession session = _sessionFactory.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
-                foreach (var contragent in _contragents)
+                foreach (var person in _persons)
                 {
-                    session.Save(contragent);
+                    session.Save(person);
                 }
                 transaction.Commit();
 
@@ -48,85 +48,85 @@ namespace DataModel.Tests
             CreateInitialData();
         }
         [Test]
-        public void CanAddNewContragent()
+        public void CanAddNewPerson()
         {
-            var contragent = new Person { FIO = "Вася Пупкин", ContactPhone = "78-65-65" };
+            var person = new Person { FIO = "Вася Пупкин", ContactPhone = "78-65-65" };
             IPersontRepository repository = new PersonRepository();
-            repository.Add(contragent);
+            repository.Add(person);
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Person>(contragent.Id);
+                var fromDb = session.Get<Person>(person.Id);
 
                 Assert.IsNotNull(fromDb);
-                Assert.AreNotSame(contragent, fromDb);
-                Assert.AreEqual(contragent.FIO, fromDb.FIO);
-                Assert.AreEqual(contragent.ContactPhone, fromDb.ContactPhone);
+                Assert.AreNotSame(person, fromDb);
+                Assert.AreEqual(person.FIO, fromDb.FIO);
+                Assert.AreEqual(person.ContactPhone, fromDb.ContactPhone);
             }
         }
         [Test]
-        public void CanUpdateExistingContragent()
+        public void CanUpdateExistingPerson()
         {
-            var contragent = _contragents[0];
-            contragent.FIO = "Петр Козлов";
+            var person = _persons[0];
+            person.FIO = "Петр Козлов";
             IPersontRepository repository = new PersonRepository();
-            repository.Update(contragent);
+            repository.Update(person);
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Person>(contragent.Id);
-                Assert.AreEqual(contragent.FIO, fromDb.FIO);
+                var fromDb = session.Get<Person>(person.Id);
+                Assert.AreEqual(person.FIO, fromDb.FIO);
             }
         }
         [Test]
-        public void CanDeleteExistingContragent()
+        public void CanDeleteExistingPerson()
         {
-            var contragent = _contragents[0];
+            var person = _persons[0];
             IPersontRepository repository = new PersonRepository();
-            repository.Remove(contragent);
+            repository.Remove(person);
 
             using (ISession session = _sessionFactory.OpenSession())
             {
-                var fromDb = session.Get<Person>(contragent.Id);
+                var fromDb = session.Get<Person>(person.Id);
                 Assert.IsNull(fromDb);
             }
 
         }
         [Test]
-        public void CanGetContragentById()
+        public void CanGetPersonById()
         {
 
             IPersontRepository repository = new PersonRepository();
-            var fromDb = repository.GetById(_contragents[1].Id);
+            var fromDb = repository.GetById(_persons[1].Id);
             Assert.IsNotNull(fromDb);
-            Assert.AreNotSame(_contragents[1], fromDb);
-            Assert.AreEqual(_contragents[1].FIO, fromDb.FIO);
+            Assert.AreNotSame(_persons[1], fromDb);
+            Assert.AreEqual(_persons[1].FIO, fromDb.FIO);
         }
 
         [Test]
-        public void CanGetContragentByName()
+        public void CanGetPersonByName()
         {
             IPersontRepository repository = new PersonRepository();
-            var fromDb = repository.GetByFio(_contragents[1].FIO);
+            var fromDb = repository.GetByFio(_persons[1].FIO);
             Assert.IsNotNull(fromDb);
-            Assert.AreNotSame(_contragents[1], fromDb);
-            Assert.AreEqual(_contragents[1].FIO, fromDb.FIO);
+            Assert.AreNotSame(_persons[1], fromDb);
+            Assert.AreEqual(_persons[1].FIO, fromDb.FIO);
 
         }
         [Test]
-        public void CanGetContragentByPartName()
+        public void CanGetPersonByPartName()
         {
             IPersontRepository repository = new PersonRepository();
             var fromDb = repository.GetByPartFio("Сергей");
             Assert.IsNotNull(fromDb);
             Assert.AreEqual(fromDb.Count, 2);
-            Assert.IsTrue(IsInCollection(fromDb, _contragents[0]));
-            Assert.IsFalse(IsInCollection(fromDb, _contragents[1]));
-            Assert.IsFalse(IsInCollection(fromDb, _contragents[2]));
-            Assert.IsTrue(IsInCollection(fromDb, _contragents[3]));
+            Assert.IsTrue(IsInCollection(fromDb, _persons[0]));
+            Assert.IsFalse(IsInCollection(fromDb, _persons[1]));
+            Assert.IsFalse(IsInCollection(fromDb, _persons[2]));
+            Assert.IsTrue(IsInCollection(fromDb, _persons[3]));
         }
 
-        private bool IsInCollection(ICollection<Person> collection, Person searchingContragent)
+        private bool IsInCollection(ICollection<Person> collection, Person searchingPerson)
         {
-            return collection.Any(contragent => contragent.Id == searchingContragent.Id);
+            return collection.Any(person => person.Id == searchingPerson.Id);
         }
     }
    

@@ -77,10 +77,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Client.cs" />
+    <Compile Include="Domain\Ware.cs" />
     <Compile Include="Mapping\ClientMap.cs" />
+    <Compile Include="Mapping\WareMap.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
     <Compile Include="Repositories\Interfaces\IClientRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IWareRepository.cs" />
     <Compile Include="Repositories\Interfaces\IWorkerRepository.cs" />
     <Compile Include="Domain\Person.cs" />
     <Compile Include="Repositories\Interfaces\IModelRepository.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="Mapping\WareGroupMap.cs" />
     <Compile Include="Mapping\Worker.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\WareRepository.cs" />
     <Compile Include="Repositories\WareTypeRepository.cs" />
     <Compile Include="Repositories\ProducerRepository.cs" />
     <Compile Include="Repositories\WareGroupRepository.cs" />
