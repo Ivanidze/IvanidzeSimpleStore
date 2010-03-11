@@ -76,7 +76,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Client.cs" />
+    <Compile Include="Mapping\ClientMap.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IClientRepository.cs" />
     <Compile Include="Repositories\Interfaces\IWorkerRepository.cs" />
     <Compile Include="Domain\Person.cs" />
     <Compile Include="Repositories\Interfaces\IModelRepository.cs" />

@@ -10,7 +10,8 @@ namespace DataModel.Mapping
     public class PersonMap:ClassMap<Person>
     {
         public PersonMap()
-        {Table("Contragent");
+        {
+            Table("Person");
             Id(x => x.Id).GeneratedBy.Native();
             Map(x => x.FIO).Not.Nullable();
             Map(x => x.ContactPhone);

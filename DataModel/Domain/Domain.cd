@@ -1,31 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DataModel.Domain.WareGroup">
-    <Position X="4.75" Y="1.5" Width="1.5" />
+  <Class Name="DataModel.Domain.WareGroup" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAEAAAAAAEQAQAAAAAAAAAIAAAAAEAAAA=</HashCode>
       <FileName>Domain\WareGroup.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DataModel.Domain.Producer">
-    <Position X="8.25" Y="1.5" Width="1.5" />
+  <Class Name="DataModel.Domain.Producer" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Domain\Producer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DataModel.Domain.Contragent" Collapsed="true">
+  <Class Name="DataModel.Domain.Person" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Domain\Contragent.cs</FileName>
+      <FileName>Domain\Person.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DataModel.Domain.Model">
-    <Position X="6.5" Y="1.5" Width="1.5" />
+  <Class Name="DataModel.Domain.WareType" Collapsed="true">
+    <Position X="6.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>Domain\Model.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Domain\WareType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Domain.Worker" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Worker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Domain.Client" Collapsed="true">
+    <Position X="2" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Client.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Tahoma" Size="8.25" />
