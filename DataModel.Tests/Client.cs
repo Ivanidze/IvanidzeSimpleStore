@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DataModel.Domain;
+﻿using DataModel.Domain;
 using DataModel.Repositories;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
@@ -27,6 +23,8 @@ namespace DataModel.Tests
                                                             new Client
                                                                 {FIO = "Сергей Бездарнов",ContactPhone = "33-65-23",Identification = "Лакмусовая бумажка"}
                                                         };
+
+        private IClientRepository _repository;
         private void CreateInitialData()
         {
             using (ISession session = _sessionFactory.OpenSession())
@@ -39,6 +37,7 @@ namespace DataModel.Tests
                 transaction.Commit();
 
             }
+            _repository = new ClientRepository();
         }
 
         [SetUp]
@@ -53,8 +52,7 @@ namespace DataModel.Tests
         public void CanAddNewClient()
         {
             var client = new Client { FIO = "Саня Лохматый", ContactPhone = "5433534" ,Identification = "Паспорт 124432"};
-            IClientRepository repository = new ClientRepository();
-            repository.Add(client);
+            _repository.Add(client);
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 var fromDb = session.Get<Client>(client.Id);
@@ -69,8 +67,7 @@ namespace DataModel.Tests
         {
             var client = _clients[0];
             client.FIO = "Сергей Игнатьевич";
-            IClientRepository repository = new ClientRepository();
-            repository.Update(client);
+            _repository.Update(client);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<Client>(client.Id);
@@ -80,10 +77,8 @@ namespace DataModel.Tests
         [Test]
         public void CanDeleteExistingClient()
         {
-            var client = _clients[0];
-            IClientRepository repository = new ClientRepository();
-            repository.Remove(client);
-
+            var client = _clients[2];
+            _repository.Remove(client);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<Client>(client.Id);
@@ -94,13 +89,18 @@ namespace DataModel.Tests
         [Test]
         public void CanGetClientById()
         {
-            IClientRepository repository = new ClientRepository();
-            var fromDb = repository.GetById(_clients[1].Id);
+            var fromDb = _repository.GetById(_clients[1].Id);
             Assert.IsNotNull(fromDb);
             Assert.AreNotSame(_clients[1], fromDb);
             Assert.AreEqual(_clients[1].FIO, fromDb.FIO);
             Assert.AreEqual(_clients[1].Identification, fromDb.Identification);
 
+        }
+        [Test]
+        public void CanGetClientAll()
+        {
+            var collection = _repository.GetAll();
+            Assert.AreEqual(_clients.Length,collection.Count);
         }
     }
 }

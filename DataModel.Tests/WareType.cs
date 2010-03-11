@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NHibernate;
+﻿using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
 using DataModel.Repositories;
@@ -19,6 +14,7 @@ namespace DataModel.Tests
 
         private WareGroup _root, _child1, _child2, _child1_1, _child1_2,_root2;
         private Producer _producer, _producer2;
+        private IWareTypeRepository _repository;
         [SetUp]
         public void SetupContext()
         {
@@ -74,14 +70,14 @@ namespace DataModel.Tests
                 }
             }
 
-
+        _repository = new WareTypeRepository();
         }
         [Test]
         public void CanAddNewWareType()
         {
             var wareType = new WareType { Name = "N76",WareGroup = _child1_1 ,Producer = _producer2};
-            IWareTypeRepository repository = new WareTypeRepository();
-            repository.Add(wareType);
+            
+            _repository.Add(wareType);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<WareType>(wareType.Id);
@@ -98,9 +94,8 @@ namespace DataModel.Tests
         public void CanUpdateModel()
         {
             var wareType = _model1;
-            IWareTypeRepository repository = new WareTypeRepository();
             wareType.Name = "N79";
-            repository.Update(wareType);
+            _repository.Update(wareType);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<WareType>(wareType.Id);
@@ -113,13 +108,26 @@ namespace DataModel.Tests
         public void CanDeleteModel()
         {
             var wareType = _model2;
-            IWareTypeRepository repository = new WareTypeRepository();
-            repository.Remove(wareType);
+            _repository.Remove(wareType);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<WareType>(wareType.Id);
                 Assert.IsNull(fromDb);
             }
+        }
+        [Test]
+        public void CanGetWorkerById()
+        {
+            var fromDb = _repository.GetById(_model2.Id);
+            Assert.IsNotNull(fromDb);
+            Assert.AreNotSame(_model2, fromDb);
+            Assert.AreEqual(_model2.Name, fromDb.Name);
+        }
+        [Test]
+        public void CanGetWorkerAll()
+        {
+            var collection = _repository.GetAll();
+            Assert.AreEqual(2,collection.Count);
         }
     }
 

@@ -4,7 +4,7 @@ using DataModel.Domain;
 namespace DataModel.Repositories
 
 {
-    public interface IPersontRepository:IBaseRepository<Person>
+    public interface IPersonRepository:IBaseRepository<Person>
     {
         
         Person GetByFio(string persronFio);

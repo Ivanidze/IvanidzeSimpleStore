@@ -21,6 +21,8 @@ namespace DataModel.Tests
                                                             new Producer{Caption = "LG"}
             
                                                         };
+
+        private IProducerRepository _repository;
         private void CreateInitialData()
         {
             using (ISession session = _sessionFactory.OpenSession())
@@ -33,6 +35,7 @@ namespace DataModel.Tests
                 transaction.Commit();
 
             }
+            _repository = new ProducerRepository();
         }
 
         [SetUp]
@@ -46,8 +49,7 @@ namespace DataModel.Tests
         public void CanAddNewProducer()
         {
             var producer = new Producer { Caption = "ATI" };
-            IProducerRepository repository = new ProducerRepository();
-            repository.Add(producer);
+            _repository.Add(producer);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<Producer>(producer.Id);
@@ -63,8 +65,7 @@ namespace DataModel.Tests
         {
             var producer = _producers[0];
             producer.Caption = "Nokla";
-            IProducerRepository repository = new ProducerRepository();
-            repository.Update(producer);
+            _repository.Update(producer);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<Producer>(producer.Id);
@@ -75,9 +76,7 @@ namespace DataModel.Tests
         public void CanDeleteExistingContragent()
         {
             var producer = _producers[0];
-            IProducerRepository repository = new ProducerRepository();
-            repository.Remove(producer);
-
+            _repository.Remove(producer);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<Producer>(producer.Id);
@@ -88,9 +87,7 @@ namespace DataModel.Tests
         [Test]
         public void CanGetProducerById()
         {
-
-            IProducerRepository repository = new ProducerRepository();
-            var fromDb = repository.GetById(_producers[1].Id);
+            var fromDb = _repository.GetById(_producers[1].Id);
             Assert.IsNotNull(fromDb);
             Assert.AreNotSame(_producers[1], fromDb);
             Assert.AreEqual(_producers[1].Caption, fromDb.Caption);
@@ -99,12 +96,17 @@ namespace DataModel.Tests
         [Test]
         public void CanGetProducerByCaption()
         {
-            IProducerRepository repository = new ProducerRepository();
-            var fromDb = repository.GetByCaption(_producers[1].Caption);
+            var fromDb = _repository.GetByCaption(_producers[1].Caption);
             Assert.IsNotNull(fromDb);
             Assert.AreNotSame(_producers[1], fromDb);
             Assert.AreEqual(_producers[1].Caption, fromDb.Caption);
 
+        }
+        [Test]
+        public void CanGetProducerAll()
+        {
+            var collection = _repository.GetAll();
+            Assert.AreEqual(_producers.Length,collection.Count);
         }
     }
 

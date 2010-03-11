@@ -42,5 +42,12 @@
       <FileName>Domain\Client.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="DataModel.Domain.Ware" Collapsed="true">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAAgAAAAAAABAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Domain\Ware.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Tahoma" Size="8.25" />
 </ClassDiagram>

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DataModel.Domain;
+﻿using System.Collections.Generic;
 using NHibernate;
-
+using NHibernate.LambdaExtensions;
 namespace DataModel.Repositories
 {
     public class BaseRepository<T>:IBaseRepository<T>
@@ -44,6 +40,14 @@ namespace DataModel.Repositories
             using (var session = NHibernateHelper.OpenSession())
             {
                 return session.Get<T>(id);
+            }
+        }
+
+        public ICollection<T> GetAll()
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                return session.CreateCriteria(typeof (T)).List<T>();
             }
         }
     }

@@ -6,7 +6,7 @@ using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
 namespace DataModel.Repositories
 {
-    public class PersonRepository:BaseRepository<Person>,IPersontRepository
+    public class PersonRepository:BaseRepository<Person>,IPersonRepository
     {
         
        
@@ -14,10 +14,10 @@ namespace DataModel.Repositories
         {
            using (ISession session = NHibernateHelper.OpenSession())
            {
-               Person contragent =
-                   session.CreateCriteria(typeof (Person)).Add<Person>(x=>x.FIO==contragentFio).UniqueResult<Person>();
+               Person person =
+                   session.CreateCriteria<Person>().Add<Person>(x=>x.FIO==contragentFio).UniqueResult<Person>();
                        
-               return contragent;
+               return person;
            }
         }
 
@@ -26,7 +26,7 @@ namespace DataModel.Repositories
             using (ISession session = NHibernateHelper.OpenSession())
             {
                var contragent =
-                    session.CreateCriteria(typeof (Person)).Add(Restrictions.Like("FIO", string.Format("%{0}%",contragentFioPart))).List<Person>();
+                    session.CreateCriteria<Person>().Add(SqlExpression.Like<Person>(p => p.FIO, string.Format("%{0}%",contragentFioPart))).List<Person>();
                 return contragent;
             }
         }

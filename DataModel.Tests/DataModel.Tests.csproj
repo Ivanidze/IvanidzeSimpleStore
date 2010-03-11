@@ -87,6 +87,7 @@
     <Compile Include="Producer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ware.cs" />
+    <Compile Include="WareForTesting.cs" />
     <Compile Include="WareType.cs" />
     <Compile Include="WareGroup.cs" />
     <Compile Include="Worker.cs" />

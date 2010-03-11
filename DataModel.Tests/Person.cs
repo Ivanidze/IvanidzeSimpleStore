@@ -26,6 +26,8 @@ namespace DataModel.Tests
                                                             new Person{FIO = "Сергей Бездарнов",ContactPhone = "33-65-23"}
             
                                                         };
+
+        private IPersonRepository _repository;
         private void CreateInitialData()
         {
             using (ISession session = _sessionFactory.OpenSession())
@@ -38,6 +40,7 @@ namespace DataModel.Tests
                 transaction.Commit();
 
             }
+            _repository = new PersonRepository();
         }
 
         [SetUp]
@@ -51,8 +54,7 @@ namespace DataModel.Tests
         public void CanAddNewPerson()
         {
             var person = new Person { FIO = "Вася Пупкин", ContactPhone = "78-65-65" };
-            IPersontRepository repository = new PersonRepository();
-            repository.Add(person);
+            _repository.Add(person);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<Person>(person.Id);
@@ -68,8 +70,7 @@ namespace DataModel.Tests
         {
             var person = _persons[0];
             person.FIO = "Петр Козлов";
-            IPersontRepository repository = new PersonRepository();
-            repository.Update(person);
+            _repository.Update(person);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<Person>(person.Id);
@@ -80,8 +81,7 @@ namespace DataModel.Tests
         public void CanDeleteExistingPerson()
         {
             var person = _persons[0];
-            IPersontRepository repository = new PersonRepository();
-            repository.Remove(person);
+            _repository.Remove(person);
 
             using (ISession session = _sessionFactory.OpenSession())
             {
@@ -94,8 +94,7 @@ namespace DataModel.Tests
         public void CanGetPersonById()
         {
 
-            IPersontRepository repository = new PersonRepository();
-            var fromDb = repository.GetById(_persons[1].Id);
+            var fromDb = _repository.GetById(_persons[1].Id);
             Assert.IsNotNull(fromDb);
             Assert.AreNotSame(_persons[1], fromDb);
             Assert.AreEqual(_persons[1].FIO, fromDb.FIO);
@@ -104,8 +103,7 @@ namespace DataModel.Tests
         [Test]
         public void CanGetPersonByName()
         {
-            IPersontRepository repository = new PersonRepository();
-            var fromDb = repository.GetByFio(_persons[1].FIO);
+            var fromDb = _repository.GetByFio(_persons[1].FIO);
             Assert.IsNotNull(fromDb);
             Assert.AreNotSame(_persons[1], fromDb);
             Assert.AreEqual(_persons[1].FIO, fromDb.FIO);
@@ -114,8 +112,7 @@ namespace DataModel.Tests
         [Test]
         public void CanGetPersonByPartName()
         {
-            IPersontRepository repository = new PersonRepository();
-            var fromDb = repository.GetByPartFio("Сергей");
+            var fromDb = _repository.GetByPartFio("Сергей");
             Assert.IsNotNull(fromDb);
             Assert.AreEqual(fromDb.Count, 2);
             Assert.IsTrue(IsInCollection(fromDb, _persons[0]));
@@ -127,6 +124,12 @@ namespace DataModel.Tests
         private bool IsInCollection(ICollection<Person> collection, Person searchingPerson)
         {
             return collection.Any(person => person.Id == searchingPerson.Id);
+        }
+        [Test]
+        public void CanGetPersonAll()
+        {
+            var collection = _repository.GetAll();
+            Assert.AreEqual(_persons.Length,collection.Count);
         }
     }
    

@@ -1,6 +1,4 @@
-﻿
-
-using DataModel.Domain;
+﻿using DataModel.Domain;
 
 namespace DataModel.Repositories
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DataModel.Domain;
+﻿using DataModel.Domain;
 using DataModel.Repositories;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
@@ -27,6 +23,8 @@ namespace DataModel.Tests
                                                             new Worker{FIO = "Сергей Бездарнов",ContactPhone = "33-65-23"}
             
                                                         };
+
+        private IWorkerRepository _repository;
         private void CreateInitialData()
         {
             using (ISession session = _sessionFactory.OpenSession())
@@ -39,6 +37,7 @@ namespace DataModel.Tests
                 transaction.Commit();
 
             }
+            _repository = new WorkerRepository();
         }
 
         [SetUp]
@@ -53,8 +52,7 @@ namespace DataModel.Tests
         public void CanAddNewWorker()
         {
             var worker = new Worker {FIO = "Саня Лохматый", ContactPhone = "5433534"};
-            IWorkerRepository repository = new WorkerRepository();
-            repository.Add(worker);
+            _repository.Add(worker);
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 var fromDb = session.Get<Worker>(worker.Id);
@@ -68,8 +66,7 @@ namespace DataModel.Tests
         {
             var worker = _workers[0];
             worker.FIO = "Сергей Игнатьевич";
-            IWorkerRepository repository = new WorkerRepository();
-            repository.Update(worker);
+            _repository.Update(worker);
             using (ISession session = _sessionFactory.OpenSession())
             {
                 var fromDb = session.Get<Worker>(worker.Id);
@@ -80,8 +77,7 @@ namespace DataModel.Tests
         public void CanDeleteExistingWorker()
         {
             var worker = _workers[0];
-            IWorkerRepository repository = new WorkerRepository();
-            repository.Remove(worker);
+            _repository.Remove(worker);
 
             using (ISession session = _sessionFactory.OpenSession())
             {
@@ -93,13 +89,16 @@ namespace DataModel.Tests
         [Test]
         public void CanGetWorkerById()
         {
-
-            IWorkerRepository repository = new WorkerRepository();
-            var fromDb = repository.GetById(_workers[1].Id);
+            var fromDb = _repository.GetById(_workers[1].Id);
             Assert.IsNotNull(fromDb);
             Assert.AreNotSame(_workers[1], fromDb);
             Assert.AreEqual(_workers[1].FIO, fromDb.FIO);
         }
-
+        [Test]
+        public void CanGetWorkerAll()
+        {
+            var collection = _repository.GetAll();
+            Assert.AreEqual(4,collection.Count);
+        }
     }
 }

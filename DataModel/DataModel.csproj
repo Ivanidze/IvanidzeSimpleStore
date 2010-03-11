@@ -78,11 +78,14 @@
   <ItemGroup>
     <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\Ware.cs" />
+    <Compile Include="Domain\WareForTesting.cs" />
     <Compile Include="Mapping\ClientMap.cs" />
+    <Compile Include="Mapping\WareForTestingMap.cs" />
     <Compile Include="Mapping\WareMap.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
     <Compile Include="Repositories\Interfaces\IClientRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IWareForTestingRepository.cs" />
     <Compile Include="Repositories\Interfaces\IWareRepository.cs" />
     <Compile Include="Repositories\Interfaces\IWorkerRepository.cs" />
     <Compile Include="Domain\Person.cs" />
@@ -98,14 +101,15 @@
     <Compile Include="Mapping\WareGroupMap.cs" />
     <Compile Include="Mapping\Worker.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\WareForTestingRepository.cs" />
     <Compile Include="Repositories\WareRepository.cs" />
     <Compile Include="Repositories\WareTypeRepository.cs" />
     <Compile Include="Repositories\ProducerRepository.cs" />
     <Compile Include="Repositories\WareGroupRepository.cs" />
     <Compile Include="Repositories\Interfaces\IWareGroupRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\PersontRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IPersontRepository.cs" />
+    <Compile Include="Repositories\PersonRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IPersonRepository.cs" />
     <Compile Include="Repositories\NHibernateHelper.cs" />
     <Compile Include="Repositories\WorkerRepository.cs" />
   </ItemGroup>

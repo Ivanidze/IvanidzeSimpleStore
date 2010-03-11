@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using DataModel.Domain;
+﻿using DataModel.Domain;
 using DataModel.Repositories;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
@@ -55,9 +54,46 @@ namespace DataModel.Tests
                 transaction.Commit();
             }
         }
-
         [Test]
-        public void CanLoadAggregateById()
+        public void CanAddNewClient()
+        {
+            var client = new WareGroup { Name = "child new", Parent = _child1_1 };
+            _repository.Add(client);
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var fromDb = session.Get<WareGroup>(client.Id);
+                Assert.IsNotNull(fromDb);
+                Assert.AreNotEqual(client, fromDb);
+                Assert.AreEqual(client.Name, fromDb.Name);
+                Assert.AreEqual(client.Parent.Name, fromDb.Parent.Name);
+            }
+        }
+        [Test]
+        public void CanUpdateExistingWareGroup()
+        {
+            var wareGroup = _child2_1;
+            wareGroup.Name = "Сергей Игнатьевич";
+            _repository.Update(wareGroup);
+            using (ISession session = _sessionFactory.OpenSession())
+            {
+                var fromDb = session.Get<WareGroup>(wareGroup.Id);
+                Assert.AreEqual(wareGroup.Name, fromDb.Name);
+            }
+        }
+        [Test]
+        public void CanDeleteExistingWareGroup()
+        {
+            var wareGroup = _child2_2;
+            _repository.Remove(wareGroup);
+            using (ISession session = _sessionFactory.OpenSession())
+            {
+                var fromDb = session.Get<Client>(wareGroup.Id);
+                Assert.IsNull(fromDb);
+            }
+
+        }
+        [Test]
+        public void CanGetWareGroupById()
         {
             var id = _root.Id;
             var node = _repository.GetById(id);
@@ -73,13 +109,20 @@ namespace DataModel.Tests
         }
 
         [Test]
-        public void CanGetAncestors()
+        public void CanGetWareGroupAncestors()
         {
             var id = _child1_3.Id;
             var node = _repository.GetById(id);
             Assert.AreEqual(0,node.Children.Count);
             Assert.AreEqual(2, node.Ancestors.Count);
             Assert.AreEqual(0, node.Descendants.Count);
+        }
+        [Test]
+        public void CanGetWareGroupAll()
+        {
+          
+            var collection = _repository.GetAll();
+            Assert.AreEqual(8,collection.Count);
         }
     }
 }
