@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="SimpleStore.Domain"
+				   namespace="SimpleStore.Domain">
+  <class name="Person" >
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name ="FIO"/>
+    <property name ="ContactPhone"/>
+    <joined-subclass  name ="Client" >
+      <key/>
+      <property name="Identification" />
+    </joined-subclass>
+    <joined-subclass name ="Worker"><key/>
+    </joined-subclass>
+    
+   </class>
+</hibernate-mapping>

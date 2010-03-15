@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="SimpleStore.Domain"
+				   namespace="SimpleStore.Domain">
+  <class name="Ware" >
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="Description" />
+    <many-to-one name="WareType" class="WareType" />
+    <many-to-one name="Worker" class="Worker" />
+    <joined-subclass name="WareForTesting">
+      <key/> 
+      <property name ="Priority"/>
+      </joined-subclass>
+  </class>
+</hibernate-mapping>
