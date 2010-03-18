@@ -8,8 +8,8 @@
     <ProjectGuid>{97652F38-FBDB-41A8-904E-B0FABF8760AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Presentation</RootNamespace>
-    <AssemblyName>Presentation</AssemblyName>
+    <RootNamespace>SimpleStore.ViewModels</RootNamespace>
+    <AssemblyName>SimpleStore.ViewModels</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -58,10 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Workers\CreateNew\Presenter.cs" />
-    <Compile Include="Workers\CreateNew\View.xaml.cs">
-      <DependentUpon>View.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Workers\CreateWorkerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimpleStore.Domain\SimpleStore.Domain.csproj">
@@ -72,12 +69,6 @@
       <Project>{4B527F62-789B-49B3-8091-F6C6A0D09661}</Project>
       <Name>SimpleStore.Infrasturcture</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Workers\CreateNew\View.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

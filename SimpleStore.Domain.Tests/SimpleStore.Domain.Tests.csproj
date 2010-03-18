@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{77C8D74B-73EC-49F3-8E70-200783B7C62B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleStore.Domain.Tests</RootNamespace>
+    <AssemblyName>SimpleStore.Domain.Tests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.0.812.4, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator, Version=1.2.0.3001, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.3.9345, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="uNhAddIns.Adapters, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\uNhAddIns.Adapters.dll</HintPath>
+    </Reference>
+    <Reference Include="uNhAddIns.Adapters.Common, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\uNhAddIns.Adapters.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="uNhAddIns.Entities, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\uNhAddIns.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="uNhAddIns.NHibernateTypeResolver, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\uNhAddIns.NHibernateTypeResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="uNhAddIns.NHibernateValidator, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalLibrarys\uNhAddIns.NHibernateValidator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SimpleStore.Configurator\Configurators\NHValidatorConfigurator.cs">
+      <Link>NHValidatorConfigurator.cs</Link>
+    </Compile>
+    <Compile Include="..\SimpleStore.Configurator\IConfigurator.cs">
+      <Link>IConfigurator.cs</Link>
+    </Compile>
+    <Compile Include="Model\CreateWorkerModelTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationTests\WorkerValidationTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrasturcture\SimpleStore.Infrasturcture.csproj">
+      <Project>{4B527F62-789B-49B3-8091-F6C6A0D09661}</Project>
+      <Name>SimpleStore.Infrasturcture</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleStore.Data.Impl\SimpleStore.Data.Impl.csproj">
+      <Project>{2F1C178A-B701-4912-8088-5CFB21926A92}</Project>
+      <Name>SimpleStore.Data.Impl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleStore.Data\SimpleStore.Data.csproj">
+      <Project>{B4E3A885-2E03-4F73-AA91-52CFA12B1E46}</Project>
+      <Name>SimpleStore.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleStore.Domain.Impl\SimpleStore.Domain.Impl.csproj">
+      <Project>{CF07F106-10E3-414E-A77C-8A97D30080E8}</Project>
+      <Name>SimpleStore.Domain.Impl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleStore.Domain\SimpleStore.Domain.csproj">
+      <Project>{ED4C8CF1-E8F1-4599-8B48-624049C508BF}</Project>
+      <Name>SimpleStore.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -52,7 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="Model\WorkerModels\ICreateNewWorker.cs" />
+    <Compile Include="Model\WorkerModels\ICreateWorkerModel.cs" />
+    <Compile Include="Model\WorkerModels\ISimpleModel.cs" />
     <Compile Include="Ware.cs" />
     <Compile Include="WareForTesting.cs" />
     <Compile Include="Person.cs" />
