@@ -8,5 +8,9 @@
     </id>
     <property name="Name" />
     <many-to-one name="Parent" class="WareGroup" column="ParentId" />
+    <bag name="Children" inverse="true" cascade="all">
+      <key column="ParentId" foreign-key="fk_WareGroup_ParentWareGroup" />
+      <one-to-many class="WareGroup" />
+    </bag>
   </class>
 </hibernate-mapping>

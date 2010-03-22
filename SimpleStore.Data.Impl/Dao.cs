@@ -60,33 +60,20 @@ namespace DataModel.DataAccess
 
         public void Save(T entity)
         {
-            var session = ContextSession;
-            using (var transaction = session.BeginTransaction())
-            {
-                session.Save(entity);
-                transaction.Commit();
-            }
+           ContextSession.Save(entity);
+           
                 
         }
 
         public void Update(T entity)
         {
-            var session = ContextSession;
-            using (var transaction = session.BeginTransaction())
-            {
-                session.Update(entity);
-                transaction.Commit();
-            }
+            ContextSession.Update(entity);
         }
 
         public void Delete(T entity)
         {
-            var session = ContextSession;
-            using (var transaction = session.BeginTransaction())
-            {
-                session.Delete(entity);
-                transaction.Commit();
-            }
+            ContextSession.Delete(entity);
+            
         }
 
         public void Refresh(T entity)

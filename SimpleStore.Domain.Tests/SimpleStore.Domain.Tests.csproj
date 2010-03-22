@@ -99,6 +99,7 @@
     <Compile Include="..\SimpleStore.Configurator\IConfigurator.cs">
       <Link>IConfigurator.cs</Link>
     </Compile>
+    <Compile Include="Model\WareGroupModelTest.cs" />
     <Compile Include="Model\CreateWorkerModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationTests\WorkerValidationTest.cs" />

@@ -1,11 +1,11 @@
 ﻿using Infrasturcture;
 using SimpleStore.Data;
-using SimpleStore.Domain.Model.WorkerModels;
+using SimpleStore.Domain.Model;
 using uNhAddIns.Adapters;
 
-namespace SimpleStore.Domain.Impl.WorkerModels
+namespace SimpleStore.Domain.Impl
 {
-    [PersistenceConversational]
+    [PersistenceConversational(MethodsIncludeMode = MethodsIncludeMode.Implicit)]
     public class CreateWorkerModel:ICreateWorkerModel
     {
         private readonly IDao<Worker> _workerDao;
@@ -25,7 +25,8 @@ namespace SimpleStore.Domain.Impl.WorkerModels
            if (IsValid(worker))
                _workerDao.Save(worker);
         }
-        private bool IsValid(Worker worker)
+        [PersistenceConversation(Exclude = true)]
+        public bool IsValid(Worker worker)
         {
            return _validator.IsValid(worker);
         }

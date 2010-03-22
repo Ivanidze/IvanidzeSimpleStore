@@ -1,0 +1,30 @@
+﻿<Window x:Class="SimpleStore.Gui.Views.WareGroupView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Views="clr-namespace:SimpleStore.Gui.Views" Title="{Binding CurrentSelectedWareGroup.WareGroup.Name, Mode=TwoWay}" Height="444" Width="860"
+       >
+    <Window.Resources>
+        <ResourceDictionary Source="WareGroupViewResources.xaml" />
+    </Window.Resources>
+
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Views:WareGroupTreeView  DataContext="{Binding }"/>
+           
+        <StackPanel>
+            
+        </StackPanel>
+        <Border Grid.Column="2" 
+                    Style="{StaticResource MainBorderStyle}">
+            <HeaderedContentControl 
+                  Content="{Binding Path=Workspaces}"
+                  ContentTemplate="{StaticResource WorkspacesTemplate}"
+                  Header="Группы товаров"
+                  Style="{StaticResource MainHCCStyle}"
+                  />
+        </Border>
+    </Grid>
+</Window>

@@ -6,9 +6,10 @@ using System.Linq;
 using System.Windows;
 using Infrasturcture;
 using Microsoft.Practices.ServiceLocation;
-using SimpleStore.Domain.Model.WorkerModels;
+using SimpleStore.Domain.Model;
+using SimpleStore.ViewModels;
 using uNhAddIns.Adapters;
-using SimpleStore.ViewModels.Workers;
+
 using SimpleStore.Domain;
 using NHibernate;
 namespace SimpleStore
@@ -26,9 +27,11 @@ namespace SimpleStore
         protected override void OnStartup(StartupEventArgs e)
         {
             var viewFactory = ServiceLocator.Current.GetInstance<IViewFactory>();
-            var t = ServiceLocator.Current.GetInstance<ISimpleModel>();
+         //   var t = ServiceLocator.Current.GetInstance<ICreateWorkerModel>();
             
-            viewFactory.ShowView<CreateWorkerViewModel>();
+            var create = viewFactory.ShowView<WareGroupViewModel>();
+            
+
         }
         protected override void OnExit(ExitEventArgs e)
         {

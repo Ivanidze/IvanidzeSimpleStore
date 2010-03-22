@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\SimpleStore.GUI\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,27 +35,22 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="uNhAddIns.Adapters, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.Adapters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalLibrarys\uNhAddIns.Adapters.dll</HintPath>
+      <HintPath>..\libs\uNhAddIns.Adapters.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.Entities, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalLibrarys\uNhAddIns.Entities.dll</HintPath>
+      <HintPath>..\libs\uNhAddIns.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateWorkerModel.cs" />
+    <Compile Include="WareGroupModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkerModels\CreateWokrerModel.cs" />
-    <Compile Include="WorkerModels\SimpleModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrasturcture\SimpleStore.Infrasturcture.csproj">
@@ -63,11 +58,11 @@
       <Name>SimpleStore.Infrasturcture</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleStore.Data\SimpleStore.Data.csproj">
-      <Project>{B4E3A885-2E03-4F73-AA91-52CFA12B1E46}</Project>
+      <Project>{1E1A7CE8-81F9-455E-A7D2-C9E644F1B951}</Project>
       <Name>SimpleStore.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleStore.Domain\SimpleStore.Domain.csproj">
-      <Project>{ED4C8CF1-E8F1-4599-8B48-624049C508BF}</Project>
+      <Project>{B036A41C-815F-4A3F-A4D5-88DBCCE1F7F6}</Project>
       <Name>SimpleStore.Domain</Name>
     </ProjectReference>
   </ItemGroup>

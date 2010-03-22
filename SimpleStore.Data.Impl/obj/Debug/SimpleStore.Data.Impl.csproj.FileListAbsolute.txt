@@ -1,0 +1,5 @@
+F:\Work\IvanidzeSimpleStore\SimpleStore.Data.Impl\obj\Debug\ResolveAssemblyReference.cache
+F:\Work\IvanidzeSimpleStore\SimpleStore.GUI\bin\Debug\SimpleStore.Data.Impl.dll
+F:\Work\IvanidzeSimpleStore\SimpleStore.GUI\bin\Debug\SimpleStore.Data.Impl.pdb
+F:\Work\IvanidzeSimpleStore\SimpleStore.Data.Impl\obj\Debug\SimpleStore.Data.Impl.dll
+F:\Work\IvanidzeSimpleStore\SimpleStore.Data.Impl\obj\Debug\SimpleStore.Data.Impl.pdb

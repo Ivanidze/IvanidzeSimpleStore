@@ -5,10 +5,10 @@ namespace Infrasturcture
     /// <summary>
     /// класс для провайдера валидатора хибернейта
     /// </summary>
-    public class NhValidatorSharedEngineProvider:ISharedEngineProvider
+    public class NHVSharedEngineProvider:ISharedEngineProvider
     {
         private readonly ValidatorEngine _validatorEngine;
-        public NhValidatorSharedEngineProvider(ValidatorEngine validatorEngine)
+        public NHVSharedEngineProvider(ValidatorEngine validatorEngine)
         {
             _validatorEngine = validatorEngine;
         }

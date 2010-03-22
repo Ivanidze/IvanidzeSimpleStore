@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\SimpleStore.GUI\bin\Debug\</OutputPath>
+    <OutputPath>..\SimpleStore.Gui\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,15 +35,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalLibrarys\Castle.DynamicProxy2.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.MicroKernel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+    <Reference Include="Castle.MicroKernel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\Castle.MicroKernel.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Windsor, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+    <Reference Include="Castle.Windsor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\Castle.Windsor.dll</HintPath>
     </Reference>
@@ -55,21 +51,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+    <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Validator, Version=1.2.0.3001, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\NHibernate.Validator.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.Validator.Specific, Version=1.2.0.3001, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalLibrarys\NHibernate.Validator.Specific.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -81,47 +73,40 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="uNhAddIns, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="System.XML" />
+    <Reference Include="uNhAddIns, Version=2.0.0.38873, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.Adapters, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.Adapters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.Adapters.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.Adapters.Castle, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.Adapters.Castle, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.Adapters.Castle.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.ComponentBehaviors, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.ComponentBehaviors, Version=2.0.0.771, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.ComponentBehaviors.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.ComponentBehaviors.Castle, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.ComponentBehaviors.Castle, Version=2.0.0.740, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.ComponentBehaviors.Castle.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.Entities, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.Entities.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.NHibernateTypeResolver, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.NHibernateTypeResolver, Version=2.0.0.770, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.NHibernateTypeResolver.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.NHibernateValidator, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.NHibernateValidator, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.NHibernateValidator.dll</HintPath>
     </Reference>
-    <Reference Include="uNhAddIns.WPF, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.WPF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.WPF.dll</HintPath>
     </Reference>
@@ -130,19 +115,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainConfigurator.cs" />
     <Compile Include="Configurators\DaoConfigurator.cs" />
-    <Compile Include="Configurators\EntityConfigurator.cs" />
+    <Compile Include="Configurators\EntitiesConfigurator.cs" />
     <Compile Include="Configurators\ModelsConfigurator.cs" />
-    <Compile Include="Configurators\NHibernateConfigurator.cs" />
-    <Compile Include="Configurators\NHValidatorConfigurator.cs" />
+    <Compile Include="Configurators\NHVConfigurator.cs" />
     <Compile Include="Configurators\ViewModelConfigurator.cs" />
     <Compile Include="Configurators\ViewsConfigurator.cs" />
+    <Compile Include="GeneralGuyWire.cs" />
     <Compile Include="IConfigurator.cs" />
+    <Compile Include="Configurators\NHibernateConfigurator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrasturcture\SimpleStore.Infrasturcture.csproj">
@@ -182,4 +164,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

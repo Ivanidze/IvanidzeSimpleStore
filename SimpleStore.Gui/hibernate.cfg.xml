@@ -9,7 +9,7 @@ for your own use before compile tests in VisualStudio.
   <session-factory name="NHibernate.Test">
     <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
     <property name="connection.connection_string">
-      Server=IVANIDZEBOOK;initial catalog=Chinook;Integrated Security=SSPI
+      Server=IVANIDZEBOOK;initial catalog=SimpleStore;Integrated Security=SSPI
     </property>
     <property name="adonet.batch_size">10</property>
     <property name="show_sql">true</property>
@@ -18,11 +18,11 @@ for your own use before compile tests in VisualStudio.
     <property name="command_timeout">10</property>
     <property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
     <property name="current_session_context_class">
-      thread_static
+      uNhAddIns.SessionEasier.Conversations.ThreadLocalConversationalSessionContext, uNhAddIns
     </property>
     <property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
     <!-- Only for tests-->
     <property name="query.startup_check">false</property>
-    <mapping assembly="ChinookMediaManager.Data.Impl"/>
+    <mapping assembly="SimpleStore.Data.Impl"/>
   </session-factory>
 </hibernate-configuration>

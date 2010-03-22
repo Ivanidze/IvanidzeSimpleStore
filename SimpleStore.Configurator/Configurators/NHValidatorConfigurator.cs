@@ -21,11 +21,11 @@ namespace SimpleStore.Configurator.Configurators
             container.Register(Component.For<IEntityValidator>().ImplementedBy<EntityValidator>());
             container.Register(Component.For<ValidatorEngine>().Instance(validatorEngine).LifeStyle.Singleton);
 
-            container.Register(Component.For<ISharedEngineProvider>().ImplementedBy<NhValidatorSharedEngineProvider>());
+            container.Register(Component.For<ISharedEngineProvider>().ImplementedBy<NHVSharedEngineProvider>());
             Environment.SharedEngineProvider = container.Resolve<ISharedEngineProvider>();
 
             var configure = new FluentConfiguration();
-            configure.Register(typeof(WareGroupValidationDefeniton).Assembly.ValidationDefinitions()).SetDefaultValidatorMode(
+            configure.Register(typeof(WorkerValidationDefenition).Assembly.ValidationDefinitions()).SetDefaultValidatorMode(
                 ValidatorMode.OverrideAttributeWithExternal).AddEntityTypeInspector<NHVTypeInspector>().
                 IntegrateWithNHibernate.ApplyingDDLConstraints().And.RegisteringListeners();
             validatorEngine.Configure(configure);

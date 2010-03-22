@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
    >
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"></BooleanToVisibilityConverter>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

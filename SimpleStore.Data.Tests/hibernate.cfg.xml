@@ -16,7 +16,7 @@
     </property>
     <property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
     <!-- Only for tests-->
-    <property name="query.startup_check">false</property>
+    <property name="query.startup_check">true</property>
     <mapping assembly="SimpleStore.Data.Impl"/>
   </session-factory>
 </hibernate-configuration>

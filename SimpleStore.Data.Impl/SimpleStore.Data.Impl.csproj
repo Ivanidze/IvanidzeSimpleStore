@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\SimpleStore.GUI\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalLibrarys\NHibernate.dll</HintPath>
+      <HintPath>..\libs\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Linq, Version=1.0.0.0, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="NHibernate.Validator, Version=1.2.0.3001, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalLibrarys\NHibernate.Validator.dll</HintPath>
+      <HintPath>..\libs\NHibernate.Validator.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -55,16 +55,26 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="uNhAddIns.Entities, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExternalLibrarys\uNhAddIns.Entities.dll</HintPath>
+      <HintPath>..\libs\uNhAddIns.Entities.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constraints\WareGroupValidationDefeniton.cs" />
+    <Compile Include="Constraints\WorkerValidationDefenition.cs" />
     <Compile Include="Dao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validators\WareGroupValidationDefeniton.cs" />
-    <Compile Include="Validators\WorkerValidationDefenition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleStore.Data\SimpleStore.Data.csproj">
+      <Project>{1E1A7CE8-81F9-455E-A7D2-C9E644F1B951}</Project>
+      <Name>SimpleStore.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleStore.Domain\SimpleStore.Domain.csproj">
+      <Project>{B036A41C-815F-4A3F-A4D5-88DBCCE1F7F6}</Project>
+      <Name>SimpleStore.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Domain\Person.hbm.xml" />
@@ -72,16 +82,6 @@
     <EmbeddedResource Include="Domain\Ware.hbm.xml" />
     <EmbeddedResource Include="Domain\WareGroup.hbm.xml" />
     <EmbeddedResource Include="Domain\WareType.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SimpleStore.Domain\SimpleStore.Domain.csproj">
-      <Project>{ED4C8CF1-E8F1-4599-8B48-624049C508BF}</Project>
-      <Name>SimpleStore.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SimpleStore.Data\SimpleStore.Data.csproj">
-      <Project>{B4E3A885-2E03-4F73-AA91-52CFA12B1E46}</Project>
-      <Name>SimpleStore.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

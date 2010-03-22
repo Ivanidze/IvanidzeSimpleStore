@@ -35,15 +35,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="uNhAddIns.Entities, Version=2.0.0.858, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="uNhAddIns.Entities, Version=2.0.0.770, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalLibrarys\uNhAddIns.Entities.dll</HintPath>
     </Reference>
@@ -55,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimpleStore.Domain\SimpleStore.Domain.csproj">
-      <Project>{ED4C8CF1-E8F1-4599-8B48-624049C508BF}</Project>
+      <Project>{B036A41C-815F-4A3F-A4D5-88DBCCE1F7F6}</Project>
       <Name>SimpleStore.Domain</Name>
     </ProjectReference>
   </ItemGroup>

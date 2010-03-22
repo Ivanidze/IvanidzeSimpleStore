@@ -46,8 +46,8 @@ namespace SimpleStore.Data.Tests
                 session.Save(_child1_3);
                 session.Save(_child2_1);
                 session.Save(_child2_2);
-
                 transaction.Commit();
+                
             }
             _repository = new Dao<WareGroup>(sessions);
             var repositorysession = sessions.OpenSession();
@@ -106,7 +106,8 @@ namespace SimpleStore.Data.Tests
             var node = _repository.GetById(id);
             Assert.IsNotNull(node);
             Assert.IsTrue(NHibernateUtil.IsInitialized(node.Parent));
-            
+            Assert.Contains(_child1,node.Children.ToList());
+            Assert.Contains(_child2, node.Children.ToList());
             Assert.IsNull(node.Parent);
             
         }

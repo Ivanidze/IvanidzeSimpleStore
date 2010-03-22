@@ -1,9 +1,9 @@
-﻿using Castle.Windsor;
+using Castle.Windsor;
 
 namespace SimpleStore.Configurator
 {
-   interface IConfigurator
+    public interface IConfigurator
     {
-       void Configure(IWindsorContainer container);
+        void Configure(IWindsorContainer container);
     }
 }

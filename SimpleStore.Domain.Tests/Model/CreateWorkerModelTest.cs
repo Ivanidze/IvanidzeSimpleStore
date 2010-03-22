@@ -4,7 +4,7 @@ using Infrasturcture;
 using Moq;
 using NUnit.Framework;
 using SimpleStore.Data;
-using SimpleStore.Domain.Impl.WorkerModels;
+using SimpleStore.Domain.Impl;
 using uNhAddIns.Adapters;
 using uNhAddIns.Adapters.Common;
 namespace SimpleStore.Domain.Tests.Model

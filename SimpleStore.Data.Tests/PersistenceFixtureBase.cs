@@ -19,6 +19,7 @@ namespace SimpleStore.Data.Tests
         {
             cfg = new Configuration();
             cfg.Configure();
+            
             new SchemaExport(cfg).Execute(false, true,false);
             sessions = (ISessionFactoryImplementor)cfg.BuildSessionFactory();
         }

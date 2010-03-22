@@ -1,39 +1,31 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Castle.Windsor;
-using SimpleStore.Domain.Model.WorkerModels;
-using SimpleStore.Domain.Impl.WorkerModels;
+using System.Reflection;
 using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+using SimpleStore.Domain.Model;
 
 namespace SimpleStore.Configurator.Configurators
 {
-    public class ModelsConfigurator:IConfigurator
+    public class ModelsConfigurator : IConfigurator
     {
+        #region IConfigurator Members
+
         public void Configure(IWindsorContainer container)
         {
-            //берем все интерфейсы модели
-            IEnumerable<Type> repositryServices =
-                typeof (ICreateWorkerModel).Assembly.GetTypes().Where(
-                    t => t.IsInterface && t.Name.EndsWith("Model"));
-            //все реализации моделей
-            IEnumerable<Type> repositoryImpl =
-                typeof (CreateWorkerModel).Assembly.GetTypes().Where(
-                    t => t.GetInterfaces().Any(i => repositryServices.Contains(i)));
-            //и регистрируем
-            foreach (Type service in repositryServices)
-            {
+            IEnumerable<Type> repositoryServices = typeof(ICreateWorkerModel).Assembly
+                .GetTypes().Where(t => t.IsInterface && t.Namespace.EndsWith("Model"));
+
+            IEnumerable<Type> repositoryImpl = Assembly.Load("SimpleStore.Domain.Impl").GetTypes()
+                .Where(t => t.GetInterfaces().Any(i => repositoryServices.Contains(i)));
+
+            foreach (Type service in repositoryServices)
                 foreach (Type impl in repositoryImpl)
-                {
                     if (service.IsAssignableFrom(impl))
-                    {
                         container.Register(Component.For(service).ImplementedBy(impl).LifeStyle.Transient);
-
-                    }
-
-                }
-            }
         }
+
+        #endregion
     }
 }
